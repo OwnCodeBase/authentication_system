@@ -29,7 +29,9 @@
     ?>
 
     <div id="main_screen">
-       <div id="window">hello world</div>
+       <div id="window">
+           
+       </div>
     </div>
 
     <?php
