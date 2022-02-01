@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>modal </title>
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(33, 31, 31, 0.5);
+        overflow: auto;
+    }
+
+    .modal-content {
+        background-color: white;
+        margin: 15% auto;
+        padding: 20px;
+        border: 2px solid black;
+        width: 80%;
+    }
+
+    .close {
+        color: grey;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <button id="mybtn">open modal</button>
+
+    <div class="modal" id="mymodal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>some text in modal.....</p>
+        </div>
+    </div>
+</body>
+<script>
+    var modal = document.getElementById("mymodal");
+    var btn = document.getElementById("mybtn");
+    var span = document.getElementsByClassName("close")[0];
+
+    btn.onclick = function () {
+        console.log("well done!");
+        modal.style.display = "block";
+    }
+
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+</html>
