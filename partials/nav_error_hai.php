@@ -45,6 +45,14 @@
          color: rgb(83, 232, 83);
          background-color: white;
      }
+    .bar{
+        width: 20vw;
+        height: 1.9rem;
+        padding: 0.9rem;
+        outline: none;
+        border-radius: 1rem;
+        border: none;
+    }
     .navbar_btn{
         padding: 0.49rem;
         border-radius: 0.4rem;
@@ -69,7 +77,7 @@
      <a href="./contact.php">Contact</a>
      </div>
      <div class="nav_icon">
-     <input type="search" placeholder="search the web">';
+     <input type="search" placeholder="search the web" class="bar">';
      
     if($loggedin){
          echo '<a href="./logout.php" class="navbar_btn">Log Out</a>';

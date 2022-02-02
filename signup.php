@@ -139,9 +139,9 @@
                         $username = $_POST['username'];
                         $password = $_POST['password'];
                         $cpassword = $_POST['cpassword'];
-                        $passhash = password_hash('password', PASSWORD_DEFAULT);
+                        $passhash = password_hash($password, PASSWORD_DEFAULT);
 
-                        $existsql = "SELECT * FROM `table 3` WHERE username='$username'";
+                        $existsql = "SELECT * FROM `table 3` WHERE username='$username';";
                         $result = mysqli_query($conn,$existsql);
                         $num = mysqli_num_rows($result);
 

@@ -1,7 +1,6 @@
 <?php
      include "./partials/server_conn.php";
      $conn = mysqli_connect($servername,$username,$password,$database);
-
      if(!$conn){
          echo "Unable to connect database".mysqli_connect_error();
      }
@@ -107,56 +106,52 @@
     /* form css ends */
 </style>
 <body>
-    <?php
-         include "./partials/_nav.php";
+    <?php 
+        include './partials/_nav.php';
     ?>
-
     <div id="main_screen">
        <div id="window">
-           
-       <div class="modal_header">
-                        <!-- <div class="close">&times;</div> -->
-                        <h1>Login form</h1>
-                    </div>
-                    <div class="modal_cont">
+           <div class="modal_header">
+                                <!-- <div class="close">&times;</div> -->
+                                <h1>Login form</h1>
+                    </div><div class="modal_cont">
                         <!-- form starts from here -->
-                        <?php   
+                       <?php 
                                 $login = false;
+                                $userError=false;
                                 if($_SERVER['REQUEST_METHOD'] == 'POST'){
                                     $username = $_POST['username'];
                                     $password = $_POST['password'];
-                                    $passhash = password_hash('password', PASSWORD_DEFAULT);
                                     
                                     // checking for credentials in database
-                                    $sql = "SELECT * FROM `table 3` WHERE username='$username' AND password='$passhash';";    
+                                    $sql = "SELECT * FROM `table 3` WHERE username='$username';";    
                                     $result = mysqli_query($conn, $sql);
                                     $num = mysqli_num_rows($result);
-                                    
-                                    $data = mysqli_fetch_assoc($result);
 
-                                        // if found row is equal to 1 
-                                            if($num == 1){                          
+                                    // if found row is equal to 1 
+                                    if($num == 1){        
+                                            $data = mysqli_fetch_assoc($result);
+                                            $hash = $data['password'];
+
+                                            if(password_verify($password,$hash)){
                                                 $login = true;
-                                                session_start();
                                                 $_SESSION['loggedin'] = true;
                                                 $_SESSION['firstname'] = $data['firstname'];
                                                 $_SESSION['lastname'] = $data['lastname'];
                                                 $_SESSION['email'] = $data['email'];
-                                                $_SESSION['username'] = $username;
+                                                $_SESSION['username'] = $data['username'];
+                                                // var_dump(headers_list());
                                                 header('location: ./index.php');
                                             }
                                             else{
-                                                echo "invalid credential";
+                                                $userError=true;
                                             }
+                                    }
+                                    else{
+                                        $userError=true;
+                                    }
                                 }
                         ?>
-                        <?php
-                                if($login == true){
-                                    $alert = "You are logged in.";
-                                    include "./partials/success.php";
-                                }
-                        ?> 
-
                         <form action="./login.php" method="post">
 
                             <input type="text" placeholder="UserName" name="username" maxlength="10">
@@ -168,18 +163,17 @@
                         <!-- form ends from here -->
                     </div>
                     <div class="modal_footer">
-                        <!-- <?php
-                            if($userError==true){
+                        <?php
+                            if($login == true){
+                                $alert = "You are logged in.";
+                                include "./partials/success.php";
+                            }
+                            if($userError == true){
                                 $alert = "Invalid credentials";
                                 include "./partials/error.php";
                             }
-                            if($success==true){
-                                $alert = "Successfully Logged In";
-                                include "./partials/success.php";
-                            }
-                        ?>         -->
+                        ?>        
                     </div>
-
        </div>
     </div>
 
