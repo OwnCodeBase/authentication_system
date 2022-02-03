@@ -28,12 +28,10 @@
         justify-content: center;
     }
     #side_bar{
-        border: 2px solid black;
         width: 20vw;
         height: 100%;
     }
     #target_screen{
-        border: 2px solid black;
         width: 80vw;
         height: 100%;
     }
@@ -44,7 +42,7 @@
     }
     .side_link{
         width: 100%;
-        height: 3rem;
+        height: fit-content;
         padding-left: 2em;
         font-size: large;
         background-color: green;

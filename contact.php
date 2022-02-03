@@ -25,6 +25,7 @@
 </style>
 <body>
     <?php
+        session_start();
          include "./partials/_nav.php";
     ?>
 

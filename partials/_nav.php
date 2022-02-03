@@ -1,9 +1,9 @@
 <?php
-    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] != true){
-        $login = false;
+    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] != false){
+        $login = true;
     }
     else{
-        $login = true;
+        $login = false;
     }
     echo '     
      <style>
@@ -74,11 +74,10 @@
             </div>
             <div class="nav_icon">';
      
-     
-    if($login){
+    if($login){    
         echo '<a href="./logout.php" class="navbar_btn">Log Out</a>';
     }
-    if(!$login){
+    else{
         echo '<a href="./login.php" class="navbar_btn">Login</a>
         <a href="./signup.php" class="navbar_btn">Sign Up</a>';
     }
