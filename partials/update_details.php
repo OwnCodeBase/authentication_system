@@ -94,8 +94,8 @@
                      include './success.php';
                  }
             ?>
-            <input type="text" placeholder="New Firstname" name="firstname" pattern="[A-Z]" maxlength="10">
-            <input type="text" placeholder="New Lastname" name="lastname" pattern="[A-Z]" maxlength="10">
+            <input type="text" placeholder="New Firstname" name="firstname" pattern="[A-Z]+" maxlength="10">
+            <input type="text" placeholder="New Lastname" name="lastname" pattern="[A-Z]+" maxlength="10">
             <a href="./update_details.php"></a>
             <button type="submit" class="submit_btn">UPDATE NAME</button>
 
