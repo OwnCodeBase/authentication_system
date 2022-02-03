@@ -135,12 +135,12 @@
 
                                             if(password_verify($password,$hash)){
                                                 $login = true;
+                                                session_start();
                                                 $_SESSION['loggedin'] = true;
                                                 $_SESSION['firstname'] = $data['firstname'];
                                                 $_SESSION['lastname'] = $data['lastname'];
                                                 $_SESSION['email'] = $data['email'];
                                                 $_SESSION['username'] = $data['username'];
-                                                // var_dump(headers_list());
                                                 header('location: ./dashboard.php');
                                             }
                                             else{

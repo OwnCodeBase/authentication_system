@@ -1,12 +1,9 @@
 <?php
     session_start();
-    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){
+    if(!isset($_SESSION['loggedin'])){
         header('location: ./login.php');
         exit();
-    } 
-    else{
-         $login = true;
-     }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,8 +65,11 @@
 
     <div class="main_screen">
         <div id="side_bar">
-            <a class="side_link" target="iframe" href="./partials/gernal.php">General</a>
-            <a class="side_link" target="iframe" href="./partials/update_details.php">Update Details</a>
+            <a class="side_link" target="iframe" href="./partials/general.php">General</a>
+            <a class="side_link" target="iframe" href="./partials/update_name.php">Change Name</a>
+            <a class="side_link" target="iframe" href="./partials/update_username.php">Change Username</a>
+            <a class="side_link" target="iframe" href="./partials/update_email.php">Change Email</a>
+            <a class="side_link" target="iframe" href="./partials/update_password.php">Change password</a>
         </div>
         <iframe id="target_screen" name='iframe'>
 

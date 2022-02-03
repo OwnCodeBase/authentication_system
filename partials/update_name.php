@@ -5,14 +5,15 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>update Details | WebCode</title>
+    <title>update Details|WebCode</title>
 </head>
 <style>
-    body{
+    body {
         width: 100vw;
         height: 50vh;
         display: flex;
@@ -21,15 +22,17 @@
         flex-direction: column;
         overflow: auto;
     }
-    form{
+
+    form {
         text-align: center;
         width: 80vw;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        flex-direction:column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
-    form>input{
+
+    form>input {
         width: 100%;
         height: 2rem;
         border: none;
@@ -39,7 +42,8 @@
         margin-top: 1rem;
         text-transform: uppercase;
     }
-    .submit_btn{
+
+    .submit_btn {
         background-color: orangered;
         color: white;
         width: 100%;
@@ -48,14 +52,16 @@
         border-radius: 1rem;
         border: none;
     }
-    .submit_btn:hover{
+
+    .submit_btn:hover {
         background-color: white;
         color: orangered;
         border: 2px solid orangered;
     }
 </style>
+
 <body>
-    
+
     <?php   
             $error = false;
             $success = false;
@@ -82,23 +88,27 @@
                 }
             }
             ?>
-    <form action="./update_details.php" method="post">
-            <h1>Update your Name</h1>
-            <?php
-                 if($error){
-                     $alert = 'Failed <b>Error :</b>'.mysqli_error($conn);
-                     include './error.php';
-                 }
-                 if($success){
-                     $alert = 'Updated successfully';
-                     include './success.php';
-                 }
-            ?>
-            <input type="text" placeholder="New Firstname" name="firstname" pattern="[A-Z]+" maxlength="10">
-            <input type="text" placeholder="New Lastname" name="lastname" pattern="[A-Z]+" maxlength="10">
-            <a href="./update_details.php"></a>
-            <button type="submit" class="submit_btn">UPDATE NAME</button>
+    <!-- form starts -->
+    <form action="./update_name.php" method="post">
+
+        <h1>Update your Name</h1>
+        <?php
+                if($error){
+                    $alert = 'Failed <b>Error :</b>'.mysqli_error($conn);
+                    include './error.php';
+                }
+                if($success){
+                    $alert = 'Updated successfully';
+                    include './success.php';
+                }
+        ?>
+        <input type="text" placeholder="New Firstname" name="firstname" pattern="[a-zA-Z]+" maxlength="10">
+        <input type="text" placeholder="New Lastname" name="lastname" pattern="[a-zA-Z]+" maxlength="10">
+        <a href="./update_details.php"></a>
+        <button type="submit" class="submit_btn">UPDATE NAME</button>
 
     </form>
+    <!-- form ends -->
 </body>
+
 </html>

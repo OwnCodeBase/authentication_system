@@ -1,9 +1,9 @@
 <?php
-    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
-        $loggedin = true;
+    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] != true){
+        $login = false;
     }
     else{
-        $loggedin = false;
+        $login = true;
     }
     echo '     
      <style>
@@ -64,21 +64,23 @@
      <div class="nav_link">';
      
     echo  '<a href="index.php">Home</a>';
-    if($loggedin){
+
+    if($login){
         echo '<a href="./dashboard.php">Dashboard</a>';
     }
-    echo ' <a href="./blog.php">Blog</a>
-     <a href="./contact.php">Contact</a>
-     </div>
-     <div class="nav_icon">';
-     
-    if($loggedin){
-         echo '<a href="./logout.php" class="navbar_btn">Log Out</a>';
-    }
 
-    if(!$loggedin){
-         echo '<a href="./login.php" class="navbar_btn">Login</a>
-                <a href="./signup.php" class="navbar_btn">Sign Up</a>';
+    echo ' <a href="./blog.php">Blog</a>
+            <a href="./contact.php">Contact</a>
+            </div>
+            <div class="nav_icon">';
+     
+     
+    if($login){
+        echo '<a href="./logout.php" class="navbar_btn">Log Out</a>';
+    }
+    if(!$login){
+        echo '<a href="./login.php" class="navbar_btn">Login</a>
+        <a href="./signup.php" class="navbar_btn">Sign Up</a>';
     }
     echo '
      </div>
