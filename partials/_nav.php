@@ -1,5 +1,4 @@
 <?php
-    session_start();
     if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
         $loggedin = true;
     }
@@ -64,12 +63,14 @@
      </div>
      <div class="nav_link">';
      
-    echo  '<a href="index.php">Home</a>
-     <a href="./blog.php">Blog</a>
+    echo  '<a href="index.php">Home</a>';
+    if($loggedin){
+        echo '<a href="./dashboard.php">Dashboard</a>';
+    }
+    echo ' <a href="./blog.php">Blog</a>
      <a href="./contact.php">Contact</a>
      </div>
-     <div class="nav_icon">
-     <input type="search" placeholder="search the web">';
+     <div class="nav_icon">';
      
     if($loggedin){
          echo '<a href="./logout.php" class="navbar_btn">Log Out</a>';

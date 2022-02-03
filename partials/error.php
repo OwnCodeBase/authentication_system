@@ -9,9 +9,14 @@
                 padding: 1rem;
                 margin-top: 1rem;
             }
+            #close{
+                float: right;
+            }
         </style>
-        <div id='close'>&times;</div>
-        <div class='error'>$alert</div>        
+        
+        <div class='error'>$alert
+            <div id='close'>&times;</div>
+        </div>        
         <script>
             var close = document.getElementById('close');
             var error = document.getElementsByClassName('error')[0];

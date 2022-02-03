@@ -141,7 +141,7 @@
                                                 $_SESSION['email'] = $data['email'];
                                                 $_SESSION['username'] = $data['username'];
                                                 // var_dump(headers_list());
-                                                header('location: ./index.php');
+                                                header('location: ./dashboard.php');
                                             }
                                             else{
                                                 $userError=true;
